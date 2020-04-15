@@ -11,7 +11,8 @@ namespace ASPNETSimple01
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //stateless
+            Response.Write("Hello World 2");
         }
     }
 }
