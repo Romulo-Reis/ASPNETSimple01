@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="default.aspx" />
     <Content Include="pRequest.aspx" />
+    <Content Include="pResponse.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +86,13 @@
     </Compile>
     <Compile Include="pRequest.aspx.designer.cs">
       <DependentUpon>pRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pResponse.aspx.cs">
+      <DependentUpon>pResponse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pResponse.aspx.designer.cs">
+      <DependentUpon>pResponse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
