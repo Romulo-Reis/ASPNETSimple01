@@ -13,6 +13,13 @@ namespace ASPNETSimple01
         {
             string s = Request.QueryString["s"];
             Response.Write(s);
+            Response.Write(Request.Path + "<br>");
+            Response.Write(Request.PhysicalPath + "<br>");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Write(Request.Form["text"]);
         }
     }
 }
