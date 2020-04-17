@@ -70,6 +70,7 @@
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="pHeaders.aspx" />
+    <Content Include="pHttpContext.aspx" />
     <Content Include="pRequest.aspx" />
     <Content Include="pResponse.aspx" />
     <Content Include="pUsersOnline.aspx" />
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="pHeaders.aspx.designer.cs">
       <DependentUpon>pHeaders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pHttpContext.aspx.cs">
+      <DependentUpon>pHttpContext.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pHttpContext.aspx.designer.cs">
+      <DependentUpon>pHttpContext.aspx</DependentUpon>
     </Compile>
     <Compile Include="pRequest.aspx.cs">
       <DependentUpon>pRequest.aspx</DependentUpon>
