@@ -13,6 +13,8 @@ namespace ASPNETSimple01
         {
             Response.Write("Users Online: ");
             Response.Write(Application["ONLINE"]);
+            Response.Write("<BR><BR>");
+            Response.Write(HttpContext.GetGlobalResourceObject("Main", "MOEDA"));
         }
     }
 }

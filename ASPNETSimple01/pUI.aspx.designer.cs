@@ -11,7 +11,7 @@ namespace ASPNETSimple01
 {
 
 
-    public partial class pUsersOnline
+    public partial class pUI
     {
 
         /// <summary>
@@ -22,5 +22,23 @@ namespace ASPNETSimple01
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// Controle txtNomeComponente.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNomeComponente;
+
+        /// <summary>
+        /// Controle btnComponente.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnComponente;
     }
 }

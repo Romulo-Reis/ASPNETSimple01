@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pUsersOnline.aspx.cs" Inherits="ASPNETSimple01.pUsersOnline" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="pUsersOnline.aspx.cs" Inherits="ASPNETSimple01.pUsersOnline" UICulture="en-US" %>
 
 <!DOCTYPE html>
 
