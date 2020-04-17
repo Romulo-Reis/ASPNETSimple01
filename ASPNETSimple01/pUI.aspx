@@ -10,9 +10,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:TextBox ID="txtNomeComponente" runat="server" BackColor="#CCCCCC" BorderColor="#33CC33" Font-Bold="True" Font-Size="20pt" OnTextChanged="TextBox1_TextChanged">Default Text</asp:TextBox>
-            <asp:Button ID="btnComponente" runat="server" BackColor="White" Text="Button" Width="92px" />
+            <asp:TextBox ID="txtNomeComponente" runat="server" BackColor="#CCCCCC" BorderColor="#33CC33" Font-Bold="True" Font-Size="20pt" OnTextChanged="TextBox1_TextChanged" AutoPostBack="True">Default Text</asp:TextBox>
+            <asp:Button ID="btnComponente" runat="server" BackColor="White" Text="Button" Width="92px" OnClick="btnComponente_Click" />
         </div>
+        <asp:Label ID="lblMsg" runat="server" Text="Label" BackColor="Yellow"></asp:Label>
     </form>
 </body>
 </html>

@@ -16,7 +16,14 @@ namespace ASPNETSimple01
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
         {
+            lblMsg.Text = txtNomeComponente.Text;
+        }
 
+        protected void btnComponente_Click(object sender, EventArgs e)
+        {
+            txtNomeComponente.Enabled = false;
+            //btnComponente.Enabled = false;
+            ((Button)sender).Enabled = false;
         }
     }
 }
