@@ -11,7 +11,11 @@ namespace ASPNETSimple01
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                ListItem li = new ListItem("Verde", "4");
+                DropDownList1.Items.Add(li);
+            }
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
@@ -24,6 +28,16 @@ namespace ASPNETSimple01
             txtNomeComponente.Enabled = false;
             //btnComponente.Enabled = false;
             ((Button)sender).Enabled = false;
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            lblChk.Text = CheckBox1.Checked.ToString();
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblDrop.Text = DropDownList1.SelectedItem.Value + " - " + DropDownList1.SelectedItem.Text;
         }
     }
 }
