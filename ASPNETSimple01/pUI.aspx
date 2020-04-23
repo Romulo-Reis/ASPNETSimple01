@@ -26,6 +26,11 @@
             <asp:ListItem Value="3" Enabled="false">Vermelho</asp:ListItem>
         </asp:DropDownList>
         <asp:Label ID="lblDrop" runat="server" Text="Label"></asp:Label>
+        <p>
+            <asp:Literal ID="Literal1" runat="server" Text="Literal Text"></asp:Literal>
+        </p>
+        <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" OnVisibleMonthChanged="Calendar1_VisibleMonthChanged" SelectedDate="04/23/2020 17:00:07"></asp:Calendar>
+        <asp:TextBox ID="txtDate" runat="server"></asp:TextBox>
     </form>
 </body>
 </html>

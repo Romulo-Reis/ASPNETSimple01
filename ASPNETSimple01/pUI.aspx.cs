@@ -39,5 +39,15 @@ namespace ASPNETSimple01
         {
             lblDrop.Text = DropDownList1.SelectedItem.Value + " - " + DropDownList1.SelectedItem.Text;
         }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            txtDate.Text = Calendar1.SelectedDate.ToString("dd/MM/yyyy");
+        }
+
+        protected void Calendar1_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
+        {
+            txtDate.Text = String.Empty;
+        }
     }
 }
