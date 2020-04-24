@@ -71,6 +71,7 @@
     <Content Include="Global.asax" />
     <Content Include="pHeaders.aspx" />
     <Content Include="pHttpContext.aspx" />
+    <Content Include="pPanel.aspx" />
     <Content Include="pRequest.aspx" />
     <Content Include="pResponse.aspx" />
     <Content Include="pSettings.aspx" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="pHttpContext.aspx.designer.cs">
       <DependentUpon>pHttpContext.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pPanel.aspx.cs">
+      <DependentUpon>pPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pPanel.aspx.designer.cs">
+      <DependentUpon>pPanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="pRequest.aspx.cs">
       <DependentUpon>pRequest.aspx</DependentUpon>

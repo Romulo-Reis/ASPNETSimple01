@@ -15,6 +15,8 @@ namespace ASPNETSimple01
             {
                 ListItem li = new ListItem("Verde", "4");
                 DropDownList1.Items.Add(li);
+
+                Literal1.Text = hdValor.Value;
             }
         }
 
