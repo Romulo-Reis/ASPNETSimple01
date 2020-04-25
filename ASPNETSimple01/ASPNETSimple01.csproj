@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="pDataSources.aspx" />
     <Content Include="pHeaders.aspx" />
     <Content Include="pHttpContext.aspx" />
     <Content Include="pPanel.aspx" />
@@ -99,6 +100,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Main.resx</DependentUpon>
+    </Compile>
+    <Compile Include="pDataSources.aspx.cs">
+      <DependentUpon>pDataSources.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pDataSources.aspx.designer.cs">
+      <DependentUpon>pDataSources.aspx</DependentUpon>
     </Compile>
     <Compile Include="pHeaders.aspx.cs">
       <DependentUpon>pHeaders.aspx</DependentUpon>
