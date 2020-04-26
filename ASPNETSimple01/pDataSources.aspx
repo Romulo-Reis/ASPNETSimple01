@@ -10,10 +10,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:SqlDataSource ID="SqlDSCidades" runat="server" ConnectionString="<%$ ConnectionStrings:simpledbConnectionString %>" SelectCommand="SELECT * FROM [Cidades]" DeleteCommand="DELETE FROM Cidades WHERE [IdCidade] = @idCidade">
+            <asp:SqlDataSource ID="SqlDSCidades" runat="server" ConnectionString="<%$ ConnectionStrings:simpledbConnectionString %>" SelectCommand="SELECT * FROM [Cidades]" DeleteCommand="DELETE FROM Cidades WHERE [IdCidade] = @idCidade" UpdateCommand="UPDATE Cidades SET descricao = @descricao WHERE (IdCidade = @idCidade)">
                 <DeleteParameters>
                     <asp:ControlParameter ControlID="GVCidades" Name="idCidade" PropertyName="SelectedValue" />
                 </DeleteParameters>
+                <UpdateParameters>
+                    <asp:Parameter Type="String" Name="descricao" />
+                    <asp:ControlParameter ControlID="GVCidades" DefaultValue="SelectedValue" Name="newparameter" PropertyName="SelectedValue" />
+                </UpdateParameters>
             </asp:SqlDataSource>
             <asp:GridView ID="GVCidades" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="IdCidade" DataSourceID="SqlDSCidades" PageSize="5" GridLines="Horizontal" OnRowDeleted="GVCidades_RowDeleted" OnRowDeleting="GVCidades_RowDeleting">
                 <Columns>
@@ -35,6 +39,7 @@
                             <asp:Button runat="server" ID="btnDelete" Text="Delete" CommandName="Delete" OnClientClick="return confirm('OK ?');"/>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
                 </Columns>
             </asp:GridView>
             <asp:Label ID="lbl" runat="server"></asp:Label>
