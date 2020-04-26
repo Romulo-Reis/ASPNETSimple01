@@ -28,5 +28,10 @@ namespace ASPNETSimple01
         {
 
         }
+
+        public string DoUpper(object dados)
+        {
+            return dados.ToString().ToUpper();
+        }
     }
 }
