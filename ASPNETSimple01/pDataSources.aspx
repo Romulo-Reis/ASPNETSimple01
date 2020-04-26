@@ -25,7 +25,40 @@
             <asp:GridView ID="GVCidades" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="IdCidade" DataSourceID="SqlDSCidades" PageSize="5" GridLines="Horizontal" OnRowDeleted="GVCidades_RowDeleted" OnRowDeleting="GVCidades_RowDeleting">
                 <Columns>
                     <asp:BoundField DataField="IdCidade" HeaderText="IdCidade" InsertVisible="False" ReadOnly="True" SortExpression="IdCidade" />
-                    <asp:BoundField DataField="descricao" HeaderText="descricao" SortExpression="descricao" />
+                    <asp:TemplateField HeaderText="descricao" SortExpression="descricao">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("descricao") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# DoUpper(Eval("descricao")) %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                     <asp:BoundField DataField="descricao" HeaderText="Descrição" SortExpression="descricao" />
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            Meu Botão
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Button runat="server" ID="btn" Text="OK" OnClick="btn_Click"/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <HeaderTemplate>
+                            Delete
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Button runat="server" ID="btnDelete" Text="Delete" CommandName="Delete" OnClientClick="return confirm('OK ?');"/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ShowHeader="False">
+                        <EditItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="True" CommandName="Update" Text="Atualizar" />
+                            &nbsp;<asp:Button ID="Button2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Button ID="Button1" runat="server" CausesValidation="False" CommandName="Edit" Text="Editar" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
             <asp:Label ID="lbl" runat="server"></asp:Label>
@@ -39,7 +72,22 @@
                     &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
                 </InsertItemTemplate>
             </asp:FormView>
+            <br /><br />
         </div>
+        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDSCidades">
+            <HeaderTemplate>
+                <table border ="1">
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td><%# Eval("idCidade") %></td>
+                    <td><%# Eval("descricao") %></td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
     </form>
 </body>
 </html>
