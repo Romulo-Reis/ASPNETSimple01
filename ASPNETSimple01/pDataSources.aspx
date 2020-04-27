@@ -23,8 +23,12 @@
                 </InsertParameters>
             </asp:SqlDataSource>
             <asp:GridView ID="GVCidades" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="IdCidade" DataSourceID="SqlDSCidades" PageSize="5" GridLines="Horizontal" OnRowDeleted="GVCidades_RowDeleted" OnRowDeleting="GVCidades_RowDeleting">
+                <EmptyDataTemplate>
+                    Nenhum Dado Encontrado.
+                </EmptyDataTemplate>
                 <Columns>
                     <asp:BoundField DataField="IdCidade" HeaderText="IdCidade" InsertVisible="False" ReadOnly="True" SortExpression="IdCidade" />
+                    <asp:BoundField DataField="sigla" HeaderText="Sigla" InsertVisible="False" ReadOnly="True" SortExpression="sigla" />
                     <asp:TemplateField HeaderText="descricao" SortExpression="descricao">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("descricao") %>'></asp:TextBox>
@@ -88,6 +92,99 @@
                 </table>
             </FooterTemplate>
         </asp:Repeater>
+        <br />
+        <asp:ListView ID="ListView1" runat="server" DataKeyNames="IdCidade" DataSourceID="SqlDSCidades" GroupItemCount="3" InsertItemPosition="LastItem">
+            <AlternatingItemTemplate>
+                <td runat="server" style="background-color:#FFF8DC;">IdCidade:
+                    <asp:Label ID="IdCidadeLabel" runat="server" Text='<%# Eval("IdCidade") %>' />
+                    <br />descricao:
+                    <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                    <br />
+                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Excluir" />
+                    <br />
+                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Editar" />
+                    <br /></td>
+            </AlternatingItemTemplate>
+            <EditItemTemplate>
+                <td runat="server" style="background-color:#008A8C;color: #FFFFFF;">IdCidade:
+                    <asp:Label ID="IdCidadeLabel1" runat="server" Text='<%# Eval("IdCidade") %>' />
+                    <br />descricao:
+                    <asp:TextBox ID="descricaoTextBox" runat="server" Text='<%# Bind("descricao") %>' />
+                    <br />
+                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Atualizar" />
+                    <br />
+                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancelar" />
+                    <br /></td>
+            </EditItemTemplate>
+            <EmptyDataTemplate>
+                <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+                    <tr>
+                        <td>Nenhum dado foi retornado.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            <EmptyItemTemplate>
+<td runat="server" />
+            </EmptyItemTemplate>
+            <GroupTemplate>
+                <tr id="itemPlaceholderContainer" runat="server">
+                    <td id="itemPlaceholder" runat="server"></td>
+                </tr>
+            </GroupTemplate>
+            <InsertItemTemplate>
+                <td runat="server" style="">descricao:
+                    <asp:TextBox ID="descricaoTextBox" runat="server" Text='<%# Bind("descricao") %>' />
+                    <br />
+                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Inserir" />
+                    <br />
+                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Limpar" />
+                    <br /></td>
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <td runat="server" style="background-color:#DCDCDC;color: #000000;">IdCidade:
+                    <asp:Label ID="IdCidadeLabel" runat="server" Text='<%# Eval("IdCidade") %>' />
+                    <br />descricao:
+                    <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                    <br />
+                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Excluir" />
+                    <br />
+                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Editar" />
+                    <br /></td>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <table runat="server">
+                    <tr runat="server">
+                        <td runat="server">
+                            <table id="groupPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
+                                <tr id="groupPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr runat="server">
+                        <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;">
+                            <asp:DataPager ID="DataPager1" runat="server" PageSize="12">
+                                <Fields>
+                                    <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                </Fields>
+                            </asp:DataPager>
+                        </td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            <SelectedItemTemplate>
+                <td runat="server" style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">IdCidade:
+                    <asp:Label ID="IdCidadeLabel" runat="server" Text='<%# Eval("IdCidade") %>' />
+                    <br />descricao:
+                    <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                    <br />
+                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Excluir" />
+                    <br />
+                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Editar" />
+                    <br /></td>
+            </SelectedItemTemplate>
+        </asp:ListView>
+        <br />
     </form>
 </body>
 </html>
