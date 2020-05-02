@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -72,6 +73,7 @@
     <Content Include="pDataSources.aspx" />
     <Content Include="pHeaders.aspx" />
     <Content Include="pHttpContext.aspx" />
+    <Content Include="pLinqDS.aspx" />
     <Content Include="pPanel.aspx" />
     <Content Include="pRequest.aspx" />
     <Content Include="pResponse.aspx" />
@@ -122,6 +124,13 @@
     <Compile Include="pHttpContext.aspx.designer.cs">
       <DependentUpon>pHttpContext.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pLinqDS.aspx.cs">
+      <DependentUpon>pLinqDS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pLinqDS.aspx.designer.cs">
+      <DependentUpon>pLinqDS.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pPanel.aspx.cs">
       <DependentUpon>pPanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,9 +174,22 @@
     <Compile Include="pUsersOnline.aspx.designer.cs">
       <DependentUpon>pUsersOnline.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Simple.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Simple.dbml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Simple.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Simple.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Simple.dbml.layout">
+      <DependentUpon>Simple.dbml</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_LocalResources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
