@@ -10,16 +10,18 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:SqlDataSource ID="SqlDSCidades" runat="server" ConnectionString="<%$ ConnectionStrings:simpledbConnectionString %>" SelectCommand="SELECT * FROM [Cidades]" DeleteCommand="DELETE FROM Cidades WHERE [IdCidade] = @idCidade" UpdateCommand="UPDATE Cidades SET descricao = @descricao WHERE (IdCidade = @idCidade)" InsertCommand="INSERT INTO Cidades(descricao) VALUES (@descricao)">
+            <asp:SqlDataSource ID="SqlDSCidades" runat="server" ConnectionString="<%$ ConnectionStrings:simpledbConnectionString %>" SelectCommand="SELECT * FROM [Cidades]" DeleteCommand="DELETE FROM Cidades WHERE [IdCidade] = @idCidade" UpdateCommand="UPDATE Cidades SET descricao = @descricao, sigla = @sigla WHERE (IdCidade = @idCidade)" InsertCommand="INSERT INTO Cidades(descricao, sigla) VALUES (@descricao, @sigla)">
                 <DeleteParameters>
                     <asp:ControlParameter ControlID="GVCidades" Name="idCidade" PropertyName="SelectedValue" />
                 </DeleteParameters>
                 <UpdateParameters>
                     <asp:Parameter Type="String" Name="descricao" />
+                    <asp:Parameter Type="String" Name="sigla" />
                     <asp:ControlParameter ControlID="GVCidades" DefaultValue="SelectedValue" Name="newparameter" PropertyName="SelectedValue" />
                 </UpdateParameters>
                 <InsertParameters>
                     <asp:Parameter Type="String" Name="descricao" />
+                    <asp:Parameter Type="String" Name="sigla" />
                 </InsertParameters>
             </asp:SqlDataSource>
             <asp:GridView ID="GVCidades" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="IdCidade" DataSourceID="SqlDSCidades" PageSize="5" GridLines="Horizontal" OnRowDeleted="GVCidades_RowDeleted" OnRowDeleting="GVCidades_RowDeleting">
@@ -28,7 +30,7 @@
                 </EmptyDataTemplate>
                 <Columns>
                     <asp:BoundField DataField="IdCidade" HeaderText="IdCidade" InsertVisible="False" ReadOnly="True" SortExpression="IdCidade" />
-                    <asp:BoundField DataField="sigla" HeaderText="Sigla" InsertVisible="False" ReadOnly="True" SortExpression="sigla" />
+                    <asp:BoundField DataField="sigla" HeaderText="Sigla" InsertVisible="False" ReadOnly="false" SortExpression="sigla" />
                     <asp:TemplateField HeaderText="descricao" SortExpression="descricao">
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("descricao") %>'></asp:TextBox>
@@ -69,9 +71,16 @@
             <br />
             <asp:FormView ID="FormView1" runat="server" DataKeyNames="IdCidade" DataSourceID="SqlDSCidades" DefaultMode="Insert">
                 <InsertItemTemplate>
-                    Descrição:
-                    <asp:TextBox ID="descricaoTextBox" runat="server" Text='<%# Bind("descricao") %>' />
-                    <br />
+                    <table>
+                        <tr>
+                            <td>Descrição:</td>
+                            <td><asp:TextBox ID="descricaoTextBox" runat="server" Text='<%# Bind("descricao") %>' /></td>
+                        </tr>
+                        <tr>
+                            <td>Sigla:</td>
+                            <td><asp:TextBox ID="siglaTextBox" runat="server" Text='<%# Bind("sigla") %>' /></td>
+                        </tr>
+                    </table>
                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Inserir" />
                     &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" />
                 </InsertItemTemplate>
@@ -86,6 +95,7 @@
                 <tr>
                     <td><%# Eval("idCidade") %></td>
                     <td><%# Eval("descricao") %></td>
+                    <td><%# Eval("sigla") %></td>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>
@@ -99,6 +109,8 @@
                     <asp:Label ID="IdCidadeLabel" runat="server" Text='<%# Eval("IdCidade") %>' />
                     <br />descricao:
                     <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                    <br />sigla:
+                    <asp:Label ID="siglaLabel" runat="server" Text='<%# Eval("sigla") %>' />
                     <br />
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Excluir" />
                     <br />
@@ -110,6 +122,8 @@
                     <asp:Label ID="IdCidadeLabel1" runat="server" Text='<%# Eval("IdCidade") %>' />
                     <br />descricao:
                     <asp:TextBox ID="descricaoTextBox" runat="server" Text='<%# Bind("descricao") %>' />
+                    <br />sigla:
+                    <asp:TextBox ID="siglaTextBox" runat="server" Text='<%# Bind("sigla") %>' />
                     <br />
                     <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Atualizar" />
                     <br />
@@ -135,6 +149,9 @@
                 <td runat="server" style="">descricao:
                     <asp:TextBox ID="descricaoTextBox" runat="server" Text='<%# Bind("descricao") %>' />
                     <br />
+                    sigla:
+                    <asp:TextBox ID="siglaTextBox" runat="server" Text='<%# Bind("sigla") %>' />
+                    <br />
                     <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Inserir" />
                     <br />
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Limpar" />
@@ -145,6 +162,8 @@
                     <asp:Label ID="IdCidadeLabel" runat="server" Text='<%# Eval("IdCidade") %>' />
                     <br />descricao:
                     <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                    <br />sigla:
+                    <asp:Label ID="siglaLabel" runat="server" Text='<%# Eval("sigla") %>' />
                     <br />
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Excluir" />
                     <br />
@@ -177,6 +196,8 @@
                     <asp:Label ID="IdCidadeLabel" runat="server" Text='<%# Eval("IdCidade") %>' />
                     <br />descricao:
                     <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                    <br />sigla:
+                    <asp:Label ID="siglaLabel" runat="server" Text='<%# Eval("sigla") %>' />
                     <br />
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Excluir" />
                     <br />
